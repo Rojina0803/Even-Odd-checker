@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Even/Odd Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+
+            color: #721c24;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Attach event listener to the button
+            var checkButton = document.getElementById("checkButton");
+            checkButton.addEventListener("click", checkNumber);
+        });
+
+        function checkNumber() {
+            // Get the input value
+            var userInput = document.getElementById("numberInput").value;
+
+            // Check if the input is empty
+            if (userInput === "") {
+                alert("Please enter a number.");
+                return;
+            }
+
+            // Check if the input is a valid number
+            if (isNaN(userInput)) {
+                alert("Please enter a valid number.");
+                return;
+            }
+
+            // Convert the input to an integer
+            var number = parseInt(userInput);
+
+            // Check if the number is even or odd
+            var result = (number % 2 === 0) ? "Even" : "Odd";
+
+            // Display the result on the page
+            document.getElementById("result").innerHTML = "The number " + number + " is " + result + ".";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Even/Odd Checker</h1>
+        <form>
+            <label for="numberInput">Enter a number:</label>
+            <input type="text" id="numberInput" name="numberInput">
+            <button type="button" id="checkButton">Check</button>
+        </form>
+        <p id="result"></p>
+    </div>
+</body>
+</html>
